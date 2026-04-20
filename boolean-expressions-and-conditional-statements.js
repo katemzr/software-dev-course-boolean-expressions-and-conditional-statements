@@ -33,14 +33,28 @@ console.log("You see two paths: one leads to the mountains, the other to the vil
 const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
 
 if (choice === "mountains" && hasTorch) {
-  console.log("You safely navigate through the dark mountains.");
+    console.log("You safely navigate through the dark mountains.");
+    const choiceCompass = readline.question("You see a compass. Do you pick it up?");
+    if (choiceCompass === "yes") {
+        console.log("You navigate North to find an orchard. There you are able to eat and rest.");
+    } else if (choiceCompass === "no") {
+        console.log("You do not know which direction in North. You cannot find the orchard and die of starvation.");
+    }
 } else if (choice === "mountains" && !hasTorch) {
-  console.log("It's too dark to proceed. You decide to turn back.");
+    console.log("It's too dark to proceed. You decide to turn back.");
 } else if (choice === "village" || hasMap) {
-  console.log("You find your way to the village.");
+    console.log("You find your way to the village.");
+    const hasMoney = true;
+    const choiceKnife = readline.question("A vendor offers a fair price for a sharp knife. She says that thieves and murderers have been attacking travelers recently. Do you buy the knife for protection?");
+    if (choiceKnife === "yes" && hasMoney) {
+        console.log("You purchase the knife with plenty of money to spare. You notice shady characters eyeing your coin purse, but with your new knife on your belt, no one dares attack you.");
+    } else if (choiceKnife === "no" || !hasMoney) {
+        console.log("You do not purchase the knife. As you walk through an alleyway, a hooded person attacks you from behind. They steal your coin purse and stab you in the back. You bleed out, alone and terrified.");
+    }
 } else {
-  console.log("You get lost and wander aimlessly.");
+    console.log("You get lost and wander aimlessly.");
 }
+
 
 /* 
 
